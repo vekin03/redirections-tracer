@@ -149,9 +149,14 @@
 		<h1><a href="./index.php">Redirections Tracer</a></h1>
 <?php
 	$url = "";
-	
+	$type = 'GET';
+
 	if (isset($_GET['link'])) {
 		$url = htmlentities(strtolower($_GET['link']));
+	}
+
+	if (isset($_GET['type']) && $_GET['type'] == 'GET' || $_GET['type'] == 'HEAD') {
+		$type = $_GET['type'];
 	}
 	
 	echo "<div class=\"box\">\n";
@@ -165,20 +170,15 @@
 				</tr>
 			</table>
 			<p>Request type:
-			<input type=\"radio\" name=\"type\" value=\"GET\">GET
-			<input type=\"radio\" name=\"type\" value=\"HEAD\" checked=\"checked\">HEAD</p>
+			<input type=\"radio\" name=\"type\" value=\"GET\"". (($type=='GET')?"checked=\"checked\"":"").">GET
+			<input type=\"radio\" name=\"type\" value=\"HEAD\"". (($type=='HEAD')?"checked=\"checked\"":"").">HEAD</p>
 		</form>
 	</div>";
 
 	if (isset($_GET['link']) && (strlen($_GET['link']) > 0)) {
 		$size = 0;
-		$type = 'GET';
 		$url = addhttp(strtolower(trim($_GET['link'])));
-		
-		if (isset($_GET['type']) && $_GET['type'] == 'GET' || $_GET['type'] == 'HEAD') {
-			$type = $_GET['type'];
-		}
-		
+	
 		$result = fetchUrl($url, $size, $type);
 		
 		if ($result != false) {
