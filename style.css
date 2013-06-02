@@ -1,0 +1,35 @@
+body {
+	font-family: Verdana, "DejaVu Sans", Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	background-color: #FFFFFF;
+}
+a {
+	text-decoration: none;
+}
+h1 a {
+	color: #2255EE;
+}
+h1 {
+	text-align: center;
+}
+.error {
+	font-weight: bold;
+	color: #ff0000;
+}
+#footer {
+	text-align: center;
+	font-size: 8pt;
+	color: #777777;
+}
+.box {
+	text-align: center;
+	margin: 5px auto;
+	border: 1px solid;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-khtml-border-radius: 10px;
+	width: 90%;
+	height:auto;
+	overflow:auto;
+}

@@ -1,0 +1,17 @@
+# compression avec MOD_DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/x-javascript application/x-httpd-php
+
+# les proxies ne doivent pas décompresser le contenu à la place de l'internaute
+Header append Vary User-Agent env=!dont-vary
+
+<IfModule mod_headers.c>
+  # Mise en cache des images et autres fichier statiques pour 12 heures
+  <FilesMatch ".(ico|jpe?g|png|gif|css|js)$">
+   Header set Cache-Control "max-age=43200"
+  </FilesMatch>
+
+  # Désactive la mise en cache pour les fichier PHP et CGI
+  <FilesMatch ".(php|cgi)$">
+   Header unset Cache-Control
+  </FilesMatch>
+</IfModule>
