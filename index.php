@@ -199,7 +199,7 @@
 					
 					$results[$i]['code'] = $code;
 					
-					if ($code < 300) {
+					if ($code < 300 && $i == 0) {
 						$results[$i++]['location'] = $url;
 					}
 				}
